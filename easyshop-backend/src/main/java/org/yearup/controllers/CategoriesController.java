@@ -76,7 +76,7 @@ public class CategoriesController {
     // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
     // add annotation to ensure that only an ADMIN can call this function
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PutMapping("/{id}/update")
+    @PutMapping("{id}")
     public void updateCategory(@PathVariable int id, @RequestBody Category category) {
         // update the category by id
         categoryDao.update(id, category);
