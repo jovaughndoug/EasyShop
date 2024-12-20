@@ -45,11 +45,14 @@ public class CategoriesController {
     @GetMapping("{id}")
     @PreAuthorize("permitAll()")
     public ResponseEntity<Category> getById(@PathVariable int id) {
+        // Retrieve the category with the specified ID from the database
         Category category = categoryDao.getById(id);
-        if(category == null){
+        // Check if the category exists
+        if (category == null) {
+            // Return a 404 Not Found response if the category does not exist
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        // get the category by id
+        // Return a 200 OK response with the category data if found
         return ResponseEntity.ok(category);
     }
 
